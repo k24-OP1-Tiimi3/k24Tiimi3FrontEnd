@@ -22,8 +22,8 @@ export default function About() {
                     friend happy and healthy!
                 </p>
             </div>
-            <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px auto', borderRadius: '5px', backgroundColor: '#ffe082', color: '#ff6f00', maxWidth: '600px', textAlign: 'center' }}>
-                <h3>Company Information</h3>
+            <div style={{ border: '1px solid #ccc', padding: '15px', margin: '10px auto', borderRadius: '5px', backgroundColor: '#e3f2fd', color: '#0d47a1', maxWidth: '600px', textAlign: 'center' }}>
+                <h3 style={{ marginBottom: '10px', color: '#1565c0' }}>Company Information</h3>
                 <p><strong>Owners:</strong> Otto and Rane</p>
                 <p><strong>Established:</strong> 2020</p>
                 <p><strong>Business ID:</strong> 1234567-8</p>
