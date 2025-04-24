@@ -1,5 +1,5 @@
 export async function getProducts() {
-    const response = await fetch('https://k24tiimi3backendprojekti-elainkauppaprojekti.2.rahtiapp.fi/api/products');
+    const response = await fetch('http://localhost:8080/api/products');
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }

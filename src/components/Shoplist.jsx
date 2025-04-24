@@ -1,10 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { getProducts } from '../api/products';
-import { AgGridReact } from "ag-grid-react";
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
-
-// Register all Community features
-ModuleRegistry.registerModules([AllCommunityModule]);
+import './shoplist.css';
+import { AgGridReact } from 'ag-grid-react';
 
 export default function Shoplist() {
     const [products, setProducts] = useState([]);
@@ -28,29 +25,11 @@ export default function Shoplist() {
     }
 
     return (
-        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-            <h3 style={{ textAlign: 'center' }}>Product List</h3>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                gap: '20px',
-                padding: '10px',
-                justifyContent: 'center'
-            }}>
+        <div className="shoplist-container">
+            <h3 className="shoplist-title">Product List</h3>
+            <div className="product-list">
                 {products.map((product) => (
-                    <div
-                        key={product.id}
-                        style={{
-                            border: '1px solid #ccc',
-                            borderRadius: '10px',
-                            padding: '15px',
-                            backgroundColor: '#f9f9f9',
-                            textAlign: 'center',
-                            width: '250px',
-                            margin: '10px'
-                        }}
-                    >
+                    <div key={product.id} className="product-card">
                         <h4>{product.name}</h4>
                         <p><strong>Type:</strong> {product.type}</p>
                         <p><strong>Color:</strong> {product.color}</p>

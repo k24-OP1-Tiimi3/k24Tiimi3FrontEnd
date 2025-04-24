@@ -1,36 +1,63 @@
+import './about.css';
+
 export default function About() {
     return (
-        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h2 style={{ textAlign: 'center' }}>About PetPack</h2>
-
-            <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px auto', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', maxWidth: '600px', textAlign: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-                <p>
-                    PetPack is your one-stop shop for all your pet's needs!
-                    We offer a wide range of high-quality pet products, from nutritious food and treats
-                    to toys, grooming supplies, and accessories.
-                </p>
+        <div className="about-container">
+            <div className="about-hero">
+                <h2>Our Story</h2>
+                <p className="tagline">Creating Pawsitive Experiences Since 2020</p>
             </div>
 
-            <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px auto', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', maxWidth: '600px', textAlign: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-                <p>
-                    Our mission is to provide the best possible products and services to ensure your pet's
-                    happiness and well-being. Whether you have a dog, cat, bird, or reptile, we have something
-                    special for every pet.
-                </p>
+            <div className="about-section">
+                <div className="icon-container">
+                    <div className="icon">🐾</div>
+                </div>
+                <div className="content">
+                    <h3>Pet Passion</h3>
+                    <p>
+                        Born from a deep love for animals, PetPack started with a simple mission: 
+                        create products that truly enhance the bond between pets and their humans. 
+                        Every item in our collection is thoughtfully designed with your pet's happiness 
+                        and wellbeing at the center.
+                    </p>
+                </div>
             </div>
 
-            <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px auto', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', maxWidth: '600px', textAlign: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-                <p>
-                    Visit us today and discover the perfect products to keep your furry, feathered, or scaly
-                    friend happy and healthy!
-                </p>
+            <div className="about-section reverse">
+                <div className="icon-container">
+                    <div className="icon">🌿</div>
+                </div>
+                <div className="content">
+                    <h3>Sustainable & Safe</h3>
+                    <p>
+                        We believe in creating products that are not only good for your pets, but also for 
+                        the planet. Our selection emphasizes eco-friendly materials, ethical production 
+                        practices, and durable designs that withstand even the most enthusiastic play sessions.
+                    </p>
+                </div>
             </div>
 
-            <div style={{ border: '1px solid #ccc', padding: '15px', margin: '10px auto', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', maxWidth: '600px', textAlign: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-                <h3 style={{ marginBottom: '10px', color: '#333333' }}>Company Information</h3>
-                <p><strong>Owners:</strong> Otto and Rane</p>
-                <p><strong>Established:</strong> 2020</p>
-                <p><strong>Business ID:</strong> 1234567-8</p>
+            <div className="about-section">
+                <div className="icon-container">
+                    <div className="icon">💙</div>
+                </div>
+                <div className="content">
+                    <h3>Community First</h3>
+                    <p>
+                        PetPack isn't just a store - we're a community of pet lovers. We regularly host 
+                        adoption events, educational workshops, and pet-friendly gatherings. Whether you have 
+                        paws, scales, feathers or fins in your family, you'll find a place here.
+                    </p>
+                </div>
+            </div>
+
+            <div className="company-card">
+                <h3>Company Information</h3>
+                <div className="company-details">
+                    <p><strong>Owners:</strong> Otto and Rane</p>
+                    <p><strong>Established:</strong> 2020</p>
+                    <p><strong>Business ID:</strong> 1234567-8</p>
+                </div>
             </div>
         </div>
     );

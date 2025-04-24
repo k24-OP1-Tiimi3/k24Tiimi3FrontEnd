@@ -1,0 +1,38 @@
+/* Yleiset tyylit */
+.shoplist-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.shoplist-title {
+    text-align: center;
+}
+
+/* Tuotelistan tyylit */
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
+/* Yksittäisen tuotteen kortin tyylit */
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    text-align: center;
+    width: 250px;
+    margin: 10px;
+}
+
+.product-card h4 {
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    margin: 5px 0;
+}

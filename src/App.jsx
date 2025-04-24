@@ -1,57 +1,33 @@
-import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import './App.css';
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   return (
     <>
       <nav className="nav">
-        <div className="nav-header">
-          <h1>Welcome to PetPack</h1>
-          <button className="menu-button" onClick={toggleMenu}>
-            ☰
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="dropdown-menu">
+        <div className="nav-container">
+          <h1>PetPack</h1>
+          <div className="nav-links">
             <NavLink
               to={"/"}
-              style={({ isActive }) => ({
-                margin: '0 15px',
-                color: isActive ? '#1abc9c' : '#2c3e50',
-                textDecoration: 'none',
-              })}
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
             >
               Home
             </NavLink>
             <NavLink
               to={"/shoplist"}
-              style={({ isActive }) => ({
-                margin: '0 15px',
-                color: isActive ? '#1abc9c' : '#2c3e50',
-                textDecoration: 'none',
-              })}
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
             >
               Products
             </NavLink>
             <NavLink
               to={"/about"}
-              style={({ isActive }) => ({
-                margin: '0 15px',
-                color: isActive ? '#1abc9c' : '#2c3e50',
-                textDecoration: 'none',
-              })}
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
             >
               About
             </NavLink>
           </div>
-        )}
+        </div>
       </nav>
       <Outlet />
     </>
