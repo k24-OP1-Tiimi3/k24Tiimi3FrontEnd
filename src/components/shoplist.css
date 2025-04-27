@@ -1,38 +1,136 @@
-/* Yleiset tyylit */
+/* General styles */
 .shoplist-container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .shoplist-title {
     text-align: center;
+    margin-bottom: 30px;
+    color: #000000; 
+    font-size: 1.8rem;
 }
 
-/* Tuotelistan tyylit */
-.product-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px;
-    justify-content: center;
-}
-
-/* Yksittäisen tuotteen kortin tyylit */
-.product-card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
-    background-color: #f9f9f9;
+.error-message {
     text-align: center;
-    width: 250px;
-    margin: 10px;
+    color: #e74c3c;
+    padding: 15px;
+    background-color: #ffeeee;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 600px;
 }
 
-.product-card h4 {
-    margin-bottom: 10px;
+.filter-container {
+    margin-bottom: 25px;
+    text-align: left;
+    font-weight: bolder;
+}
+
+.manufacturer-select {
+    padding: 8px 12px;
+    border: 3.5px solid #dce4c2;
+    border-radius: 5px;
+    margin-left: 10px;
+    background-color: #f7f9eb;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #000000;
+}
+
+.manufacturer-select option {
+    background-color: #fff;
+    color: #333;
+    padding: 8px;
+}
+
+
+.manufacturer-select option:hover {
+    background-color: #f7f9eb;
+}
+
+.manufacturer-select:focus {
+    outline: none;
+    border-color: #3e8914;
+}
+
+/* Product list style */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Individual product card style */
+.product-card {
+    background-color: #f7f9eb;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8edd9;
+    font-family: Arial, 'Segoe UI', Tahoma, sans-serif; /* Selkeämpi fontti */
+}
+
+.product-name {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #000000;
+    font-size: 1.4rem; /* Hieman suurempi */
+    border-bottom: 1px solid #dce4c2;
+    padding-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
 .product-card p {
-    margin: 5px 0;
+    margin: 11px 0; /* Hieman suurempi marginaali */
+    color: #222; /* Tummempi teksti paremman kontrastin vuoksi */
+    font-size: 1.05rem; /* Hieman suurempi teksti */
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+}
+
+/* Price information */
+.product-card p:nth-child(6) {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000000;
+    letter-spacing: 0.3px;
+}
+
+/* Type information */
+.product-card p:nth-child(2) {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.product-card strong {
+    color: #333; /* Tummempi sävy selkeyttä varten */
+    font-weight: 700; /* Vahvempi fontti */
+    margin-right: 5px; /* Lisää tilaa otsikon ja arvon välillä */
+}
+
+/* No products message */
+.no-products {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 30px;
+    background-color: #f7f9eb;
+    border-radius: 8px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+
+    .shoplist-title {
+        font-size: 1.5rem;
+    }
 }
