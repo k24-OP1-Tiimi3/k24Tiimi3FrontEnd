@@ -84,10 +84,10 @@ export default function Shoplist() {
                     filteredProducts.map((product) => (
                         <div key={product.id} className="product-card">
                             <h4 className="product-name">{product.name}</h4>
-                            <p><strong>Type:</strong> {product.typeName}</p>
+                            <p><strong>Type:</strong> {product.type.name}</p>
                             <p><strong>Color:</strong> {product.color}</p>
-                            <p><strong>Size:</strong> {product.size}</p>
-                            <p><strong>Manufacturer:</strong> {product.manufacturerName}</p>
+                                <p><strong>Size:</strong> {product.size}</p>
+                            <p><strong>Manufacturer:</strong> {product.manufacturer.name}</p>
                             <p><strong>Price:</strong> €{product.price.toFixed(2)}</p>
                             <p><strong>Inventory:</strong> {product.inventory} in stock</p>
                         </div>
