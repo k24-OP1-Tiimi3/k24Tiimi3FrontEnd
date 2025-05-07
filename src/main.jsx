@@ -1,37 +1,22 @@
-import React from 'react';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
-import App from './App';
-import About from './components/About';
-import Home from './components/Home';
-
-import { createRoot } from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
-import Shoplist from './components/Shoplist';
-
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        element: <Home />,
-        index: true
-      },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "shoplist",
-        element: <Shoplist />,
-      },
-    ]
-  }
-]
-);
+import App from './App'
+import About from './components/About'
+import Home from './components/Home'
+import Shoplist from './components/Shoplist'
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-);
+  <StrictMode>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="shoplist" element={<Shoplist />} />
+        </Route>
+      </Routes>
+    </HashRouter>
+  </StrictMode>,
+)
