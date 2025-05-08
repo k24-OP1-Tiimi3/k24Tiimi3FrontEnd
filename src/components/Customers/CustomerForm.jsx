@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { addCustomer, loginCustomer } from '../../api/customers';
+import { useUser } from './UserContext';
 import './CustomerForm.css';
 
 const CustomDialog = ({ isOpen, title, message, onClose, type = "info" }) =>
@@ -19,6 +21,9 @@ const CustomDialog = ({ isOpen, title, message, onClose, type = "info" }) =>
     );
 
 export default function CustomerForm() {
+    const navigate = useNavigate();
+    const { login } = useUser();
+
     const [formMode, setFormMode] = useState('login');
     const [loginData, setLoginData] = useState({ email: '', password: '' });
     const [registerData, setRegisterData] = useState({
@@ -78,13 +83,24 @@ export default function CustomerForm() {
 
         setIsLoading(true);
         try {
-            await loginCustomer({ email: loginData.email, password: loginData.password });
+            const userData = await loginCustomer({
+                email: loginData.email,
+                password: loginData.password
+            });
+
+            login(userData);
+
             setDialog({
                 isOpen: true,
                 title: 'Login Successful',
                 message: 'Welcome back! You have successfully logged in.',
                 type: 'success'
             });
+
+
+            setTimeout(() => {
+                navigate('/profile');
+            }, 1500);
         } catch (error) {
             setDialog({
                 isOpen: true,

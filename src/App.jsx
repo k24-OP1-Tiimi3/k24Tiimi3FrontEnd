@@ -1,7 +1,16 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useUser } from './components/Customers/UserContext';
 import './App.css';
 
 function App() {
+  const { user, logout } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <>
       <nav className="nav">
@@ -26,12 +35,27 @@ function App() {
             >
               About
             </NavLink>
-            <NavLink
-              to={"/account"}
-              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-            >
-              Account
-            </NavLink>
+            {user ? (
+              <>
+                <NavLink
+                  to={"/profile"}
+                  className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                >
+                  Profile
+                </NavLink>
+                <div className="user-info">
+                  <span className="welcome-text">Hi, {user.firstName}!</span>
+                  <button className="logout-button" onClick={handleLogout}>Logout</button>
+                </div>
+              </>
+            ) : (
+              <NavLink
+                to={"/account"}
+                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+              >
+                Account
+              </NavLink>
+            )}
           </div>
         </div>
       </nav>
