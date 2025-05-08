@@ -26,6 +26,12 @@ function App() {
             >
               About
             </NavLink>
+            <NavLink
+              to={"/account"}
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+            >
+              Account
+            </NavLink>
           </div>
         </div>
       </nav>

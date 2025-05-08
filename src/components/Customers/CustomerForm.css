@@ -1,0 +1,238 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-hover: #3e8914;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
+    --light-bg: #f7f9eb;
+    --form-bg: #ffffff;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #dce4c2;
+    --border-radius: 8px;
+}
+
+.customer-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: var(--form-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.form-tabs {
+    display: flex;
+    background-color: var(--light-bg);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    background-color: var(--form-bg);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.form-content {
+    padding: 30px;
+}
+
+form h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+input.error {
+    border-color: var(--error-color);
+    background-color: rgba(231, 76, 60, 0.05);
+}
+
+.error-message {
+    display: block;
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 16px;
+}
+
+.form-switch {
+    text-align: center;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.custom-dialog {
+    background-color: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.dialog-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.dialog-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.dialog-header.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.dialog-header.error {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.dialog-header.warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.dialog-header.info {
+    background-color: var(--info-color);
+    color: white;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    line-height: 1;
+}
+
+.dialog-content {
+    padding: 20px;
+}
+
+.dialog-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.dialog-actions {
+    padding: 15px 20px;
+    text-align: right;
+    border-top: 1px solid #eee;
+}
+
+.dialog-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .customer-form-container {
+        margin: 20px;
+        width: auto;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

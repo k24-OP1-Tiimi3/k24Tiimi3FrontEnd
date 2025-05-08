@@ -6,6 +6,7 @@ import App from './App'
 import About from './components/About'
 import Home from './components/Home'
 import Shoplist from './components/Shoplist'
+import CustomerForm from './components/Customers/CustomerForm'
 
 
 const ErrorFallback = () => {
@@ -26,6 +27,7 @@ try {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="shoplist" element={<Shoplist />} />
+            <Route path="account" element={<CustomerForm />} />
           </Route>
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
