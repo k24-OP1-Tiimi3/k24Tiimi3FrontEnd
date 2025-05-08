@@ -107,7 +107,7 @@ export default function CustomerForm() {
                 firstName: registerData.firstName,
                 lastName: registerData.lastName,
                 email: registerData.email,
-                password: registerData.password
+                passwordHash: registerData.password
             });
 
             setDialog({
@@ -117,7 +117,14 @@ export default function CustomerForm() {
                 type: 'success'
             });
 
-            setRegisterData({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
+            setRegisterData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            });
+
             setFormMode('login');
         } catch (error) {
             setDialog({
