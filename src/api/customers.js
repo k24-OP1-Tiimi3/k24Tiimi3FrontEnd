@@ -1,5 +1,8 @@
+const API_BASE_URL = 'https://k24tiimi3backend-elainkauppaprojektipostgresql.2.rahtiapp.fi/api';
+//const API_BASE_URL = 'http://localhost:8080/api'
+
 export async function getCustomers() {
-    const response = await fetch('http://localhost:8080/api/customers');
+    const response = await fetch(`${API_BASE_URL}/customers`);
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -15,15 +18,13 @@ export async function getCustomers() {
 export async function addCustomer(customer) {
     console.log("function addCustomer");
     try {
-        const response = await fetch('http://localhost:8080/api/customers', {
+        const response = await fetch(`${API_BASE_URL}/customers`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(customer),
         });
 
-
         if (!response.ok) {
-
             let errorMessage;
             try {
                 const errorData = await response.json();
@@ -53,7 +54,7 @@ export async function loginCustomer(credentials) {
             passwordHash: credentials.password
         };
         
-        const response = await fetch('http://localhost:8080/api/login', {
+        const response = await fetch(`${API_BASE_URL}/login`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(loginData),
@@ -77,13 +78,10 @@ export async function loginCustomer(credentials) {
 export async function deleteCustomer(customerId) {
     console.log("function deleteCustomer");
     try {
-        const response = await fetch(`http://localhost:8080/api/customers/${customerId}`, {
+        const response = await fetch(`${API_BASE_URL}/customers/${customerId}`, {
             method: 'DELETE',
             headers: {
-                // Include authentication if required by your API
                 'Content-type': 'application/json',
-                // You might need to add authorization header if your API requires it
-                // 'Authorization': `Bearer ${localStorage.getItem('userToken')}`
             }
         });
         

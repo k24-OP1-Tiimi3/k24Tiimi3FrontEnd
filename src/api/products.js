@@ -1,5 +1,8 @@
+const API_BASE_URL = 'https://k24tiimi3backend-elainkauppaprojektipostgresql.2.rahtiapp.fi/api';
+//const API_BASE_URL = 'http://localhost:8080/api'
+
 export async function getProducts() {
-    const response = await fetch('http://localhost:8080/api/products');
+    const response = await fetch(`${API_BASE_URL}/products`);
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
