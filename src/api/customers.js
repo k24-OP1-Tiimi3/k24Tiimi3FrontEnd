@@ -73,3 +73,34 @@ export async function loginCustomer(credentials) {
         throw error;
     }
 }
+
+export async function deleteCustomer(customerId) {
+    console.log("function deleteCustomer");
+    try {
+        const response = await fetch(`http://localhost:8080/api/customers/${customerId}`, {
+            method: 'DELETE',
+            headers: {
+                // Include authentication if required by your API
+                'Content-type': 'application/json',
+                // You might need to add authorization header if your API requires it
+                // 'Authorization': `Bearer ${localStorage.getItem('userToken')}`
+            }
+        });
+        
+        if (!response.ok) {
+            let errorMessage;
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData.message || `HTTP error! status: ${response.status}`;
+            } catch (e) {
+                errorMessage = `Failed to delete account (HTTP ${response.status})`;
+            }
+            throw new Error(errorMessage);
+        }
+        
+        return true;
+    } catch (error) {
+        console.error("Delete account error:", error);
+        throw error;
+    }
+}
