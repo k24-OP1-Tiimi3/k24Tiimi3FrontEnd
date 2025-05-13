@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getProducts } from '../api/products';
 import './shoplist.css';
+import { useCart } from './Cart/CartContext';
 
 export default function Shoplist() {
     const [products, setProducts] = useState([]);
@@ -8,6 +9,7 @@ export default function Shoplist() {
     const [manufacturers, setManufacturers] = useState([]);
     const [activeManufacturer, setActiveManufacturer] = useState('all');
     const [error, setError] = useState(null);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -90,6 +92,9 @@ export default function Shoplist() {
                             <p><strong>Manufacturer:</strong> {product.manufacturer.name}</p>
                             <p><strong>Price:</strong> €{product.price.toFixed(2)}</p>
                             <p><strong>Inventory:</strong> {product.inventory} in stock</p>
+                            <button className="add-cart-button" onClick={() => addToCart(product)}>
+                                Add to Cart
+                            </button>
                         </div>
                     ))
                 )}

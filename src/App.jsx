@@ -1,9 +1,11 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useUser } from './components/Customers/UserContext';
+import { useCart } from './components/Cart/CartContext';
 import './App.css';
 
 function App() {
   const { user, logout } = useUser();
+  const { cartCount } = useCart();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -30,6 +32,13 @@ function App() {
               Products
             </NavLink>
             <NavLink
+              to={"/cart"}
+              className={({ isActive }) => isActive ? 'nav-link active cart-link' : 'nav-link cart-link'}
+            >
+              Cart
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </NavLink>
+            <NavLink
               to={"/about"}
               className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
             >
@@ -54,7 +63,7 @@ function App() {
                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
               >
                 Account
-              </NavLink>
+              </NavLink>              
             )}
           </div>
         </div>

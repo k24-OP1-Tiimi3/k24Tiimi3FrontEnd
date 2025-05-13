@@ -9,6 +9,8 @@ import Shoplist from './components/Shoplist'
 import CustomerForm from './components/Customers/CustomerForm'
 import { UserProvider } from './components/Customers/UserContext'
 import Profile from './components/Customers/Profile'
+import Cart from './components/Cart/Cart';
+import { CartProvider } from './components/Cart/CartContext';
 
 const ErrorFallback = () => {
   return (
@@ -22,20 +24,23 @@ const ErrorFallback = () => {
 try {
   createRoot(document.getElementById('root')).render(
     <StrictMode>
-      <UserProvider>
-        <HashRouter>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<Home />} />
-              <Route path="about" element={<About />} />
-              <Route path="shoplist" element={<Shoplist />} />
-              <Route path="account" element={<CustomerForm />} />
-              <Route path="profile" element={<Profile />} />
-            </Route>
-            <Route path="*" element={<div>Page not found</div>} />
-          </Routes>
-        </HashRouter>
-      </UserProvider>
+      <CartProvider>
+        <UserProvider>
+          <HashRouter>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="shoplist" element={<Shoplist />} />
+                <Route path="account" element={<CustomerForm />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="cart" element={<Cart />} />
+              </Route>
+              <Route path="*" element={<div>Page not found</div>} />
+            </Routes>
+          </HashRouter>
+        </UserProvider>
+      </CartProvider>
     </StrictMode>
   );
 } catch (error) {
