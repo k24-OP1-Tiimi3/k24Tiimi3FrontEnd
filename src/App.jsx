@@ -31,13 +31,7 @@ function App() {
             >
               Products
             </NavLink>
-            <NavLink
-              to={"/cart"}
-              className={({ isActive }) => isActive ? 'nav-link active cart-link' : 'nav-link cart-link'}
-            >
-              Cart
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-            </NavLink>
+
             <NavLink
               to={"/about"}
               className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
@@ -63,7 +57,17 @@ function App() {
                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
               >
                 Account
-              </NavLink>              
+              </NavLink>
+            )}
+
+            {user && (
+              <NavLink
+                to={"/cart"}
+                className={({ isActive }) => isActive ? 'nav-link active cart-link' : 'nav-link cart-link'}
+              >
+                Cart
+                {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+              </NavLink>
             )}
           </div>
         </div>

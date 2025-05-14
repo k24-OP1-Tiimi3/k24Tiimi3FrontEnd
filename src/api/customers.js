@@ -1,8 +1,14 @@
-const API_BASE_URL = 'https://k24tiimi3backend-elainkauppaprojektipostgresql.2.rahtiapp.fi/api';
-//const API_BASE_URL = 'http://localhost:8080/api'
+// Base URL for all API calls - currently using the deployed backend
+// const API_BASE_URL = 'https://k24tiimi3backend-elainkauppaprojektipostgresql.2.rahtiapp.fi/api';
+const API_BASE_URL = 'http://localhost:8080/api' // Alternative local development URL
 
+/**
+ * Fetches all customers from the backend
+ * Primarily used for administrative purposes
+ */
 export async function getCustomers() {
     const response = await fetch(`${API_BASE_URL}/customers`);
+    // Check if the response was successful (status 200-299)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -15,6 +21,10 @@ export async function getCustomers() {
     }
 }
 
+/**
+ * Registers a new customer in the system
+ * Takes customer registration data and sends it to the backend
+ */
 export async function addCustomer(customer) {
     console.log("function addCustomer");
     try {
@@ -31,6 +41,7 @@ export async function addCustomer(customer) {
                 errorMessage = errorData.message || `HTTP error! status: ${response.status}`;
             } catch (e) {
                 if (response.status === 409) {
+                    // 409 Conflict - typically means email already exists
                     errorMessage = 'This user information conflicts with an existing account. Please try different details.';
                 } else {
                     errorMessage = `Registration failed (HTTP ${response.status})`;
@@ -46,14 +57,20 @@ export async function addCustomer(customer) {
     }
 }
 
+/**
+ * Authenticates a customer using email and password
+ * Returns user data on successful login
+ */
 export async function loginCustomer(credentials) {
     console.log("function loginCustomer");
     try {
+        // Transform credentials to match expected backend format
         const loginData = {
             email: credentials.email,
             passwordHash: credentials.password
         };
         
+        // Send POST request to login endpoint
         const response = await fetch(`${API_BASE_URL}/login`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
@@ -62,11 +79,12 @@ export async function loginCustomer(credentials) {
         
         if (!response.ok) {
             if (response.status === 401) {
+                // 401 Unauthorized - invalid credentials
                 throw new Error('Invalid email or password');
             }
             throw new Error(`Login failed: ${response.status}`);
         }
-        
+
         const data = await response.json();
         return data;
     } catch (error) {
@@ -75,9 +93,14 @@ export async function loginCustomer(credentials) {
     }
 }
 
+/**
+ * Deletes a customer account by ID
+ * Requires customer ID to identify which account to remove
+ */
 export async function deleteCustomer(customerId) {
     console.log("function deleteCustomer");
     try {
+        // Send DELETE request to customer-specific endpoint
         const response = await fetch(`${API_BASE_URL}/customers/${customerId}`, {
             method: 'DELETE',
             headers: {
@@ -85,6 +108,7 @@ export async function deleteCustomer(customerId) {
             }
         });
         
+        // Handle unsuccessful deletion
         if (!response.ok) {
             let errorMessage;
             try {
@@ -96,6 +120,7 @@ export async function deleteCustomer(customerId) {
             throw new Error(errorMessage);
         }
         
+        // Return true on successful deletion
         return true;
     } catch (error) {
         console.error("Delete account error:", error);
